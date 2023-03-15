@@ -15,6 +15,9 @@ public class FOV : MonoBehaviour
     public List<Transform> visibleTargets = new List<Transform>();
 
     public float meshResolution;
+    public int edgeResolveIterations;
+    public float edgeDistanceThreshold;
+    
     public MeshFilter viewMeshFilter;
     private Mesh viewMesh;
     
@@ -50,7 +53,7 @@ public class FOV : MonoBehaviour
             Transform target = targetsInViewRadius[i].transform;
             Vector2 dirToTarget = (target.position - transform.position).normalized;
             
-            if (Vector2.Angle(transform.right, dirToTarget) < viewAngle / 2)
+            if (Vector2.Angle(transform.up, dirToTarget) < viewAngle / 2)
             {
                 float dstToTarget = Vector2.Distance(transform.position, target.position);
                 if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
@@ -67,11 +70,32 @@ public class FOV : MonoBehaviour
         float stepAngleSize = viewAngle / stepCount;
         List<Vector3> viewPoints = new List<Vector3>();
 
+        ViewCastInfo oldViewCast = new ViewCastInfo();
+        
         for (int i = 0; i <= stepCount; i++)
         {
-            float angle = transform.eulerAngles.z - viewAngle / 2 + stepAngleSize * i;
+            float angle = -transform.eulerAngles.z - viewAngle / 2 + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(angle);
+            
+            if(i > 0)
+            {
+                bool edgeDstThresholdExceeded = Mathf.Abs(oldViewCast.dst - newViewCast.dst) > edgeDistanceThreshold;
+                if (oldViewCast.hit != newViewCast.hit || (oldViewCast.hit & newViewCast.hit && edgeDstThresholdExceeded))
+                {
+                    EdgeInfo edge = FindEdge(oldViewCast, newViewCast);
+                    if (edge.pointA != Vector2.zero)
+                    {
+                        viewPoints.Add(edge.pointA);
+                    }
+                    else
+                    {
+                        viewPoints.Add(edge.pointB);
+                    }
+                }
+            }
+            
             viewPoints.Add(newViewCast.point);
+            oldViewCast = newViewCast;
         }
 
         int vertexCount = viewPoints.Count + 1;
@@ -96,6 +120,32 @@ public class FOV : MonoBehaviour
         viewMesh.RecalculateNormals();
     }
 
+    EdgeInfo FindEdge(ViewCastInfo minViewCast, ViewCastInfo maxViewCast)
+    {
+        float minAngle = minViewCast.angle;
+        float maxAngle = maxViewCast.angle;
+        Vector2 minPoint = Vector2.zero;
+        Vector2 maxPoint = Vector2.zero;
+
+        for (int i = 0; i < edgeResolveIterations; i++)
+        {
+            float angle = (minAngle + maxAngle) / 2;
+            ViewCastInfo newViewCast = ViewCast(angle);
+
+            bool edgeDstThresholdExceeded = Mathf.Abs(minViewCast.dst - newViewCast.dst) > edgeDistanceThreshold;
+            
+            if (newViewCast.hit == minViewCast.hit && !edgeDstThresholdExceeded) {
+                minAngle = angle;
+                minPoint = newViewCast.point;
+            } else {
+                maxAngle = angle;
+                maxPoint = newViewCast.point;
+            }
+        }
+        
+        return new EdgeInfo(minPoint, maxPoint);
+    }
+    
     ViewCastInfo ViewCast(float globalAngle)
     {
         Vector2 dir = DirFromAngle(globalAngle, true);
@@ -111,10 +161,10 @@ public class FOV : MonoBehaviour
     public Vector2 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
         if (!angleIsGlobal) {
-            angleInDegrees += transform.eulerAngles.z;
+            angleInDegrees -= transform.eulerAngles.z;
         }
         
-        return new Vector2(Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), Mathf.Sin(angleInDegrees * Mathf.Deg2Rad));
+        return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
     public struct ViewCastInfo
@@ -130,6 +180,18 @@ public class FOV : MonoBehaviour
             this.point = point;
             this.dst = dst;
             this.angle = angle;
+        }
+    }
+
+    public struct EdgeInfo
+    {
+        public Vector2 pointA;
+        public Vector2 pointB;
+
+        public EdgeInfo(Vector2 pointA, Vector2 pointB)
+        {
+            this.pointA = pointA;
+            this.pointB = pointB;
         }
     }
     

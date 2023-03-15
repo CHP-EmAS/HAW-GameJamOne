@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
     {
         Vector2 mousePos = viewCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePos - (Vector2) transform.position).normalized;
-        transform.right = direction;
+        transform.up = direction;
         
         velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * moveSpeed;
     }
