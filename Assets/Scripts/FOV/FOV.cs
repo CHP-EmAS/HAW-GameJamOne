@@ -20,6 +20,8 @@ public class FOV : MonoBehaviour
     
     public MeshFilter viewMeshFilter;
     private Mesh viewMesh;
+
+    [SerializeField] private FOV_Rotator fovRotator;
     
     private void Start()
     {
