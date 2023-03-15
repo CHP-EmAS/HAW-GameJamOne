@@ -29,6 +29,6 @@ public class MovCamera : MonoBehaviour
             playerPosition = new Vector3(player.transform.position.x, player.transform.position.y + offset, -10);
         }
 
-        transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.fixedDeltaTime);
     }
 }
