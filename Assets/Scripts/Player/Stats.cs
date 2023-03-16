@@ -41,6 +41,11 @@ public class Stats : MonoBehaviour
     {
         return m_ChewSpeed;
     }
+    
+    public bool IsInvisible()
+    {
+        return m_Invisible;
+    }
 
     private IEnumerator BeVisibleAgain()
     {
