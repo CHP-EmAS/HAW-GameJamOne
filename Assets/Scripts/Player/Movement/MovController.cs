@@ -9,6 +9,7 @@ public class MovController : MonoBehaviour
     bool gotInput = false;
     [SerializeField] float waitSec = 1;
     [SerializeField] float moveIncrement = 1;
+    bool[] collisionDetection = new bool[4];
     Vector2 velocity = Vector2.zero;
     float movementX;
     float movementY;
