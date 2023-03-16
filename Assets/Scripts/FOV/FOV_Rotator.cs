@@ -13,6 +13,7 @@ public class FOV_Rotator : MonoBehaviour
 
     public int kiState = 1; //0 animation, 1 followPlayer, 2 killPlayer, default dead
     public Transform player;
+    private bool playerVisible;
     
     void Start()
     {
@@ -42,6 +43,30 @@ public class FOV_Rotator : MonoBehaviour
         
     }
 
+    public void PlayerVisibilityChanged(bool visible)
+    {
+        playerVisible = visible;
+        
+        if (kiState == 0 && visible)
+        {
+            kiState = 1;
+            StartCoroutine("WaitToKill");
+        }
+    }
+
+    private IEnumerator WaitToKill()
+    {
+        yield return new WaitForSeconds(.5f);
+        if (playerVisible)
+        {
+            kiState = 2;
+        }
+        else
+        {
+            kiState = 0;
+        }
+    }
+    
     private void Search()
     {
         if (animationCurves.Length > 0 && durations.Length >= animationCurves.Length)

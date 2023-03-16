@@ -21,6 +21,8 @@ public class FOV : MonoBehaviour
     public MeshFilter viewMeshFilter;
     private Mesh viewMesh;
 
+    private bool playerVisible = false;
+
     [SerializeField] private FOV_Rotator fovRotator;
     
     private void Start()
@@ -48,6 +50,8 @@ public class FOV : MonoBehaviour
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
+        bool playerVisibleHasChanged = false;
+        
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask, 0, 100);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
@@ -60,9 +64,24 @@ public class FOV : MonoBehaviour
                 float dstToTarget = Vector2.Distance(transform.position, target.position);
                 if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
+                    if (!playerVisible) {
+                        fovRotator.PlayerVisibilityChanged(true);
+                    }
+                    playerVisible = true;
+                    playerVisibleHasChanged = true;
+
                     visibleTargets.Add(target);
                 }
             }
+        }
+
+        if (!playerVisibleHasChanged)
+        {
+            if (playerVisible) {
+                fovRotator.PlayerVisibilityChanged(false);
+            }
+
+            playerVisible = false;
         }
     }
 
