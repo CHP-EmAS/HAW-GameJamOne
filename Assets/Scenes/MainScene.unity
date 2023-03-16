@@ -728,8 +728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8c85e8063f87a4e96e27864724871a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitSec: 0.25
-  moveIncrement: 0.2
+  waitSec: 0.18
+  moveIncrement: 0.1
   animator: {fileID: 1095140302}
 --- !u!212 &1095140300
 SpriteRenderer:
