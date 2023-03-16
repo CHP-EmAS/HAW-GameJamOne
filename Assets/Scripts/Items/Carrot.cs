@@ -7,9 +7,10 @@ public class Carrot : MonoBehaviour
     public CarrotType type;
     public Stats playerStats;
     
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Player"))
+    void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("lol");
+        
+        if (other.CompareTag("Player"))
         {
             // Einsammeln des GameObjects
             gameObject.SetActive(false);
