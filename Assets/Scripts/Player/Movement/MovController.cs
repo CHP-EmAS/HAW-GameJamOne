@@ -27,33 +27,62 @@ public class MovController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gotInput) return; 
+        if (gotInput) return;
+
+        Movement();
+
+    }
+    
+    void Movement()
+    {
+        movementX = Input.GetAxisRaw("Horizontal");
+        movementY = Input.GetAxisRaw("Vertical");
+
+        if (collisionDetection[0] && movementX == 1)
+        {
+            movementX = 0;
+            return;
+        }
+        if (collisionDetection[1] && movementX == -1)
+        {
+            movementX = 0;
+            return;
+        }
+
+        if (collisionDetection[2] && movementY == 1)
+        {
+            movementY = 0;
+            return;
+        }
+        if (collisionDetection[3] && movementY == -1)
+        {
+            movementY = 0;
+            return;
+        }
 
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             gotInput = true;
-            movementX = Input.GetAxisRaw("Horizontal");
-
+            
             StartCoroutine(WaitForSeconds(waitSec));
-            StartCoroutine(LerpPosition(new Vector2(transform.position.x + movementX*moveIncrement, transform.position.y), waitSec));
-
+            StartCoroutine(LerpPosition(new Vector2(transform.position.x + movementX * moveIncrement, transform.position.y), waitSec));
         }
         else if (Input.GetAxisRaw("Vertical") != 0)
         {
             gotInput = true;
-            movementY = Input.GetAxisRaw("Vertical");
-
+            
             StartCoroutine(WaitForSeconds(waitSec));
-            StartCoroutine(LerpPosition(new Vector2(transform.position.x, transform.position.y + movementY*moveIncrement), waitSec));
+            StartCoroutine(LerpPosition(new Vector2(transform.position.x, transform.position.y + movementY * moveIncrement), waitSec));
         }
-
-
     }
+
 
     IEnumerator WaitForSeconds(float s)
     {
         yield return new WaitForSeconds (s);
         gotInput = false;
+        movementX = 0;
+        movementY = 0;
     }
 
     IEnumerator LerpPosition(Vector2 targetPosition, float duration)
