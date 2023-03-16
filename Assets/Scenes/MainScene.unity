@@ -703,7 +703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095140297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.099, y: -0.409, z: 0}
+  m_LocalPosition: {x: 0.018, y: -2.831, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   durations: 0f00000006000000060000000400000003000000
   currentAnimation: 2
   kiState: 0
-  player: {fileID: 0}
+  player: {fileID: 1095140301}
 --- !u!114 &1421935432
 MonoBehaviour:
   m_ObjectHideFlags: 0

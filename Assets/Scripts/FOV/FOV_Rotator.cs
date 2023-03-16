@@ -11,7 +11,7 @@ public class FOV_Rotator : MonoBehaviour
     
     private float currentTime = 0f;
 
-    public int kiState = 1; //0 animation, 1 followPlayer, 2 killPlayer, default dead
+    public int kiState = 0; //0 animation, 1 followPlayer, 2 killPlayer, default dead
     public Transform player;
     private bool playerVisible;
     
@@ -43,6 +43,18 @@ public class FOV_Rotator : MonoBehaviour
         
     }
 
+    public void incrementCurrentAnimation()
+    {
+        if (currentAnimation < animationCurves.Length - 1)
+        {
+            currentAnimation++;
+        }
+        else
+        {
+            kiState = 5; // dead
+        }
+    }
+    
     public void PlayerVisibilityChanged(bool visible)
     {
         playerVisible = visible;

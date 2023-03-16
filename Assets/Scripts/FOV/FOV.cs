@@ -44,7 +44,10 @@ public class FOV : MonoBehaviour
 
     private void LateUpdate()
     {
-        DrawFOV();
+        if (fovRotator.kiState <= 2)
+        {
+            DrawFOV();
+        }
     }
 
     void FindVisibleTargets()
