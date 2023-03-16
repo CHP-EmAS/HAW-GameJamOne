@@ -11,7 +11,7 @@ public class FOV_Rotator : MonoBehaviour
     
     private float currentTime = 0f;
 
-    public int KiState = 1; //0 animation, 1 followPlayer, 2 killPlayer, default dead
+    public int kiState = 1; //0 animation, 1 followPlayer, 2 killPlayer, default dead
     public Transform player;
     
     void Start()
@@ -28,19 +28,14 @@ public class FOV_Rotator : MonoBehaviour
 
     void Update()
     {
-        switch (KiState)
+        switch (kiState)
         {
             case 0:
                 Search();
                 break;
             case 1:
-                FollowPlayer();
-                break;
             case 2:
-                
-                break;
-            default:
-                
+                FollowPlayer();
                 break;
         }
         
