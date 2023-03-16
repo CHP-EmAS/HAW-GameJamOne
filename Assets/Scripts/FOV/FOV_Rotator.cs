@@ -61,7 +61,7 @@ public class FOV_Rotator : MonoBehaviour
     public void PlayerVisibilityChanged(bool visible)
     {
         playerVisible = visible;
-        
+
         if (kiState == 0 && visible && !playerStats.IsInvisible())
         {
             kiState = 1;

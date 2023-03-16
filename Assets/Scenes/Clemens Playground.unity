@@ -1624,6 +1624,7 @@ MonoBehaviour:
   currentAnimation: 2
   kiState: 0
   player: {fileID: 2065263863}
+  playerStats: {fileID: 0}
 --- !u!1 &1639013141
 GameObject:
   m_ObjectHideFlags: 0

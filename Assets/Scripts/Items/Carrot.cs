@@ -8,8 +8,6 @@ public class Carrot : MonoBehaviour
     public Stats playerStats;
     
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("lol");
-        
         if (other.CompareTag("Player"))
         {
             // Einsammeln des GameObjects

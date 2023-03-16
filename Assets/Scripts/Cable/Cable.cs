@@ -11,6 +11,8 @@ public class Cable : MonoBehaviour
 
     //public ParticleSystem sparkParticleSystem;
     public FOV_Rotator fovRotator;
+
+    public Prop attachedProp;
     
     private void Update()
     {
@@ -39,6 +41,8 @@ public class Cable : MonoBehaviour
         isDestroyed = true;
         fovRotator.incrementCurrentAnimation();
 
+        attachedProp.LetsGrennItUp();
+        
         GameObject.Destroy(gameObject);
     }
 }
