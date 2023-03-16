@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class FOV_Rotator : MonoBehaviour
 {
+    [SerializeField] MovController movController;
+    [SerializeField] MovCamera movCamera;
+
     public AnimationCurve[] animationCurves;
     public int[] durations;
     public int currentAnimation = 0;
@@ -55,6 +58,8 @@ public class FOV_Rotator : MonoBehaviour
         else
         {
             kiState = 5; // dead
+            movController.SetPaused(true);
+            movCamera.SetPaused(true);
         }
     }
     

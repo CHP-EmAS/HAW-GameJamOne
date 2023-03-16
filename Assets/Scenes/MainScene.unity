@@ -953,6 +953,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013170344}
     m_Modifications:
+    - target: {fileID: 495826364577782743, guid: 7e7c6b44a5cf6a149babcd83214282d2, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 2906144717373398419, guid: 7e7c6b44a5cf6a149babcd83214282d2, type: 3}
       propertyPath: fovRotator
       value: 
@@ -1752,6 +1756,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281d8a3ae8c5f9845985893ffbea3d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1095140314 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8075037158398344351, guid: b29b1adea27d86f4ba72b86ccebfe7f5, type: 3}
+  m_PrefabInstance: {fileID: 8747407179802767966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1114488526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,6 +1843,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013170344}
     m_Modifications:
+    - target: {fileID: 495826364577782743, guid: d88a489857ead3f41822d96c2f5503aa, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 2906144717373398419, guid: d88a489857ead3f41822d96c2f5503aa, type: 3}
       propertyPath: fovRotator
       value: 
@@ -2200,6 +2213,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013170344}
     m_Modifications:
+    - target: {fileID: 495826364577782743, guid: 9a8f8e4f97124f34e87954c0520a5c52, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 2906144717373398419, guid: 9a8f8e4f97124f34e87954c0520a5c52, type: 3}
       propertyPath: fovRotator
       value: 
@@ -2438,6 +2455,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013170344}
     m_Modifications:
+    - target: {fileID: 495826364577782743, guid: eca29564dd43f4a4083571f71b7246c8, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 2906144717373398419, guid: eca29564dd43f4a4083571f71b7246c8, type: 3}
       propertyPath: fovRotator
       value: 
@@ -3051,6 +3072,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2013170344}
     m_Modifications:
+    - target: {fileID: 495826364577782743, guid: 13e5a257866803e40a27718c579015b0, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 2906144717373398419, guid: 13e5a257866803e40a27718c579015b0, type: 3}
       propertyPath: fovRotator
       value: 
@@ -4567,6 +4592,7 @@ GameObject:
   - component: {fileID: 2069793604}
   - component: {fileID: 2069793603}
   - component: {fileID: 2069793606}
+  - component: {fileID: 2069793607}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4655,6 +4681,39 @@ MonoBehaviour:
   player: {fileID: 1095140297}
   offset: 0
   offsetSmoothing: 1
+--- !u!114 &2069793607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069793602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &2127272207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4870,6 +4929,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8747407178708480405, guid: b29b1adea27d86f4ba72b86ccebfe7f5, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1095140314}
     - target: {fileID: 8747407178708480407, guid: b29b1adea27d86f4ba72b86ccebfe7f5, type: 3}
       propertyPath: m_Name
       value: Player

@@ -16,6 +16,8 @@ public class Stats : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    
+
     public void IncreaseSpeedBoost()
     {
         m_MovementSpeed += 0.2f;

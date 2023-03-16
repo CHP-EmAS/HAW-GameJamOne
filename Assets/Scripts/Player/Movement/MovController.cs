@@ -7,6 +7,7 @@ using UnityEngine;
 public class MovController : MonoBehaviour
 {
     bool gotInput = false;
+    bool paused = false;
     [SerializeField] float waitSec = 1;
     [SerializeField] float moveIncrement = 1;
     [SerializeField] Animator animator;
@@ -18,7 +19,7 @@ public class MovController : MonoBehaviour
     float movementY;
 
     public void SetCollisionDetection(int i, bool b) => collisionDetection[i] = b;
-
+    public void SetPaused(bool b) => paused = b;
     // Start is called before the first frame update
     private void Start()
     {
@@ -29,6 +30,7 @@ public class MovController : MonoBehaviour
     void Update()
     {
         if (gotInput) return;
+        if(paused) return;
 
         //SetAnimationVar();
         Movement();
