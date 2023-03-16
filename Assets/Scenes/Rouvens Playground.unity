@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 328013322}
   - component: {fileID: 328013324}
   - component: {fileID: 328013325}
+  - component: {fileID: 328013326}
   m_Layer: 0
   m_Name: ColliderY+
   m_TagString: Untagged
@@ -234,6 +235,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &328013326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328013321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495c75e59723f2345852f8b00accfa55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 2
 --- !u!1 &869590154
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +476,7 @@ GameObject:
   - component: {fileID: 1271695791}
   - component: {fileID: 1271695793}
   - component: {fileID: 1271695792}
+  - component: {fileID: 1271695794}
   m_Layer: 0
   m_Name: ColliderY-
   m_TagString: Untagged
@@ -562,6 +577,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1271695794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271695790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495c75e59723f2345852f8b00accfa55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 3
 --- !u!1 &1369861858
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +601,7 @@ GameObject:
   - component: {fileID: 1369861859}
   - component: {fileID: 1369861861}
   - component: {fileID: 1369861860}
+  - component: {fileID: 1369861862}
   m_Layer: 0
   m_Name: ColliderX-
   m_TagString: Untagged
@@ -673,6 +702,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1369861862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369861858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495c75e59723f2345852f8b00accfa55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 1
 --- !u!1 &1561339785
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +826,7 @@ GameObject:
   - component: {fileID: 1604078101}
   - component: {fileID: 1604078103}
   - component: {fileID: 1604078102}
+  - component: {fileID: 1604078104}
   m_Layer: 0
   m_Name: ColliderX+
   m_TagString: Untagged
@@ -884,6 +927,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1604078104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604078100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495c75e59723f2345852f8b00accfa55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &1884174091
 GameObject:
   m_ObjectHideFlags: 0
