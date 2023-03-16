@@ -9,6 +9,7 @@ public class MovController : MonoBehaviour
     bool gotInput = false;
     [SerializeField] float waitSec = 1;
     [SerializeField] float moveIncrement = 1;
+    [SerializeField] Animator animator;
 
     //0 = +x, 1 = -x, 2 = +y, 3 = -y
     bool[] collisionDetection = new bool[4];
@@ -29,6 +30,7 @@ public class MovController : MonoBehaviour
     {
         if (gotInput) return;
 
+        //SetAnimationVar();
         Movement();
 
     }
@@ -63,19 +65,37 @@ public class MovController : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
             gotInput = true;
-            
+            animator.SetFloat("X", movementX);
+
+            if (movementX == 1) animator.Play("Right");
+            else if (movementX == -1) animator.Play("Left");
+
             StartCoroutine(WaitForSeconds(waitSec));
             StartCoroutine(LerpPosition(new Vector2(transform.position.x + movementX * moveIncrement, transform.position.y), waitSec));
         }
         else if (Input.GetAxisRaw("Vertical") != 0)
         {
             gotInput = true;
-            
+            animator.SetFloat("Y", movementY);
+
+            if (movementY == 1) animator.Play("Up");
+            else if (movementY == -1) animator.Play("Down");
+
             StartCoroutine(WaitForSeconds(waitSec));
             StartCoroutine(LerpPosition(new Vector2(transform.position.x, transform.position.y + movementY * moveIncrement), waitSec));
         }
+
+        else animator.Play("Idle");
     }
 
+    void SetAnimationVar()
+    {
+        if (movementX == 1) animator.Play("Right");
+        else if (movementX == -1) animator.Play("Left");
+        else if (movementY == 1) animator.Play("Up");
+        else if (movementY == -1) animator.Play("Down");
+        //else animator.Play("Idle");
+    }
 
     IEnumerator WaitForSeconds(float s)
     {
