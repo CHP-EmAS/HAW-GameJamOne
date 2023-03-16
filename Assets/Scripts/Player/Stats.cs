@@ -36,7 +36,12 @@ public class Stats : MonoBehaviour
         
         StartCoroutine("BeVisibleAgain");
     }
-    
+
+    public float GetChewSpeed()
+    {
+        return m_ChewSpeed;
+    }
+
     private IEnumerator BeVisibleAgain()
     {
         yield return new WaitForSeconds(5);
