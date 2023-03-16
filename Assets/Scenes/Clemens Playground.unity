@@ -1489,8 +1489,8 @@ MonoBehaviour:
     m_RotationOrder: 0
   durations: 0f00000006000000060000000400000003000000
   currentAnimation: 4
-  KiState: 0
-  player: {fileID: 0}
+  kiState: 1
+  player: {fileID: 2065263863}
 --- !u!1 &1639013141
 GameObject:
   m_ObjectHideFlags: 0
