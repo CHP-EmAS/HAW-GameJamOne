@@ -9,18 +9,18 @@ public class Cable : MonoBehaviour
     public bool isDestroyed = false;
     public bool bitingInProgress = false;
 
-    public ParticleSystem sparkParticleSystem;
+    //public ParticleSystem sparkParticleSystem;
     public FOV_Rotator fovRotator;
     
     private void Update()
     {
         if (bitingInProgress)
         {
-            sparkParticleSystem.gameObject.SetActive(true);
+            //sparkParticleSystem.gameObject.SetActive(true);
         }
         else
         {
-            sparkParticleSystem.gameObject.SetActive(false);
+            //sparkParticleSystem.gameObject.SetActive(false);
         }
     }
 
@@ -38,5 +38,7 @@ public class Cable : MonoBehaviour
     {
         isDestroyed = true;
         fovRotator.incrementCurrentAnimation();
+
+        GameObject.Destroy(gameObject);
     }
 }
