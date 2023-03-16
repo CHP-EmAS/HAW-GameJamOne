@@ -9,10 +9,15 @@ public class MovController : MonoBehaviour
     bool gotInput = false;
     [SerializeField] float waitSec = 1;
     [SerializeField] float moveIncrement = 1;
+
+    //0 = +x, 1 = -x, 2 = +y, 3 = -y
     bool[] collisionDetection = new bool[4];
     Vector2 velocity = Vector2.zero;
     float movementX;
     float movementY;
+
+    public void SetCollisionDetection(int i, bool b) => collisionDetection[i] = b;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -23,7 +28,6 @@ public class MovController : MonoBehaviour
     void Update()
     {
         if (gotInput) return; 
-            
 
         if (Input.GetAxisRaw("Horizontal") != 0)
         {
