@@ -3,11 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+
+#if UNITY_EDITOR
+     
 using UnityEditor;
+     
+#endif
 
 [CustomEditor(typeof(FOV))]
 public class FOVEditor : Editor
 {
+#if UNITY_EDITOR
    private void OnSceneGUI()
    {
       FOV fov = (FOV)target;
@@ -25,4 +31,5 @@ public class FOVEditor : Editor
          Handles.DrawLine(fov.transform.position, visibleTarget.position);
       }
    }
+#endif
 }

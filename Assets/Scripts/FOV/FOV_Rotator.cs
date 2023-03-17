@@ -137,6 +137,8 @@ public class FOV_Rotator : MonoBehaviour
 
     IEnumerator Fade(float duration, CanvasGroup c)
     {
+        canvasGameOver.gameObject.SetActive(true);
+        
         float time = 0;
         float a = 0;
         float b = 1;

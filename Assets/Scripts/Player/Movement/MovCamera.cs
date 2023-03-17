@@ -70,6 +70,8 @@ public class MovCamera : MonoBehaviour
 
     IEnumerator Fade(float duration, CanvasGroup c)
     {
+        c.gameObject.SetActive(true);
+        
         float time = 0;
         float a = 0;
         float b = 1;
