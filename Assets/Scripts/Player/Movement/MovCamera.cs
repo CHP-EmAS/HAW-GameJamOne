@@ -64,12 +64,15 @@ public class MovCamera : MonoBehaviour
 
     IEnumerator Wait(float s)
     {
+        //Debug.Log("WAIT");
         yield return new WaitForSeconds(s);
-        StartCoroutine(Fade(.5f, canvasVictory));
+        //StartCoroutine(Fade(.5f, canvasVictory));
+        canvasVictory.gameObject.SetActive(true);
     }
 
     IEnumerator Fade(float duration, CanvasGroup c)
     {
+        //Debug.Log("FADE");
         c.gameObject.SetActive(true);
         
         float time = 0;
