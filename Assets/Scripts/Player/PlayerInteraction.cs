@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerInteraction : MonoBehaviour
     Stats stats;
     bool interactable;
     [SerializeField] float bitePause = 0.25f;
+    [SerializeField] Slider UI_Progressbar;
+    [SerializeField] GameObject UI_InteractText;
     bool bite = true;
 
     public void SetActiveCable(Cable cable) => activeCable = cable;
@@ -21,16 +24,27 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (!interactable) return;
+        if (!interactable)
+        {
+            UI_Progressbar.gameObject.SetActive(false);
+            UI_InteractText.SetActive(false);
 
-        
+            return;
+        }
+
+        UI_Progressbar.gameObject.SetActive(true);
+        UI_InteractText.SetActive(true);
+
+        UI_Progressbar.value = activeCable.GetBitePercentage();
 
         if (Input.GetKey(KeyCode.E))
         {
+            
             if (bite)
             {
                 activeCable.Bite(stats.GetChewSpeed());
                 bite = false;
+
                 StartCoroutine(Wait(bitePause));
             }
         }

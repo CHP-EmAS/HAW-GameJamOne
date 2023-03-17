@@ -8,7 +8,8 @@ public class MovController : MonoBehaviour
 {
     bool gotInput = false;
     bool paused = false;
-    [SerializeField] float waitSec = 1;
+    Stats stats;
+    [SerializeField] float waitSec;
     [SerializeField] float moveIncrement = 1;
     [SerializeField] Animator animator;
 
@@ -20,10 +21,11 @@ public class MovController : MonoBehaviour
 
     public void SetCollisionDetection(int i, bool b) => collisionDetection[i] = b;
     public void SetPaused(bool b) => paused = b;
+
     // Start is called before the first frame update
     private void Start()
     {
-        
+        stats = GetComponent<Stats>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,8 @@ public class MovController : MonoBehaviour
     {
         if (gotInput) return;
         if(paused) return;
+
+        waitSec = stats.GetMoveSpeed();
 
         //SetAnimationVar();
         Movement();

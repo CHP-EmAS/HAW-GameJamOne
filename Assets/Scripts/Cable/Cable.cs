@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Cable : MonoBehaviour
@@ -8,12 +9,15 @@ public class Cable : MonoBehaviour
     private float bitePercentage = 0;
     public bool isDestroyed = false;
     public bool bitingInProgress = false;
+    [SerializeField] GameObject kiCable;
 
     //public ParticleSystem sparkParticleSystem;
     public FOV_Rotator fovRotator;
 
     public Prop attachedProp;
-    
+
+    public float GetBitePercentage() => bitePercentage;
+
     private void Update()
     {
         if (bitingInProgress)
@@ -42,6 +46,7 @@ public class Cable : MonoBehaviour
         fovRotator.incrementCurrentAnimation();
 
         attachedProp.LetsGrennItUp();
+        kiCable.SetActive(false);
         
         GameObject.Destroy(gameObject);
     }

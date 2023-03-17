@@ -7,6 +7,9 @@ public class FOV_Rotator : MonoBehaviour
 {
     [SerializeField] MovController movController;
     [SerializeField] MovCamera movCamera;
+    [SerializeField] CanvasGroup canvasGameOver;
+
+    [SerializeField] AudioSource alarm;
 
     public AnimationCurve[] animationCurves;
     public int[] durations;
@@ -39,10 +42,12 @@ public class FOV_Rotator : MonoBehaviour
         {
             case 0:
                 Search();
+                
                 break;
             case 1:
             case 2:
                 FollowPlayer();
+                
                 break;
         }
         
@@ -58,6 +63,7 @@ public class FOV_Rotator : MonoBehaviour
         else
         {
             kiState = 5; // dead
+            
             movController.SetPaused(true);
             movCamera.SetPaused(true);
         }
@@ -76,13 +82,24 @@ public class FOV_Rotator : MonoBehaviour
 
     private IEnumerator WaitToKill()
     {
-        yield return new WaitForSeconds(.5f);
+        alarm.Play();
+
+        yield return new WaitForSeconds(1.5f);
         if (playerVisible)
         {
             kiState = 2;
+
+            movController.SetPaused(true);
+
+            player.GetComponent<Animator>().Play("Death");
+
+            StartCoroutine(WaitForGameOver(1.5f));
+
+            alarm.Stop();
         }
         else
         {
+            alarm.Stop();
             kiState = 0;
         }
     }
@@ -109,5 +126,29 @@ public class FOV_Rotator : MonoBehaviour
     {
         Vector2 direction = ((Vector2) player.position - (Vector2) transform.position).normalized;
         transform.up = direction;
+    }
+
+    IEnumerator WaitForGameOver(float s)
+    {
+        yield return new WaitForSeconds(s);
+
+        StartCoroutine(Fade(.5f, canvasGameOver));
+    }
+
+    IEnumerator Fade(float duration, CanvasGroup c)
+    {
+        float time = 0;
+        float a = 0;
+        float b = 1;
+
+        while (time < duration)
+        {
+            float t = time / duration;
+            t = t * t * (3f - 2f * t);
+
+            c.alpha = Mathf.Lerp(a, b, t);
+            time += Time.deltaTime;
+            yield return null;
+        }
     }
 }
