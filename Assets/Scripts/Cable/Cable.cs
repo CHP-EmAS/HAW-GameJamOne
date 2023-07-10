@@ -12,6 +12,7 @@ public class Cable : MonoBehaviour
     [SerializeField] GameObject kiCable;
 
     //public ParticleSystem sparkParticleSystem;
+	//hallo ich war hier am 10.07.2023
     public FOV_Rotator fovRotator;
 
     public Prop attachedProp;
